@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 import "./App.css";
 import SmurfForm from "./components/SmurfForm";
 import Smurfs from "./components/Smurfs";
-import axios from "axios"
+import axios from "axios";
 
 class App extends Component {
   constructor(props) {
@@ -14,27 +14,27 @@ class App extends Component {
     };
   }
 
-  componentDidMount () {
+  componentDidMount() {
     axios
-    .get("http://localhost:3333/smurfs")
-    // .then(res=>console.log(res))
-    // .then(res=>console.log(res.data))
-    .then(res=>this.setState({smurfs: res.data}))
+      .get("http://localhost:3333/smurfs")
+      // .then(res=>console.log(res))
+      // .then(res=>console.log(res.data))
+      .then(res => this.setState({ smurfs: res.data }));
   }
 
   addSmurf = newSmurf => {
     axios
-    .post("http://localhost:3333/smurfs", newSmurf)
-    .then(res=>this.setState({smurfs: res.data}))
-    .catch(rej=>console.log(rej))
-  }
+      .post("http://localhost:3333/smurfs", newSmurf)
+      .then(res => this.setState({ smurfs: res.data }))
+      .catch(rej => console.log(rej));
+  };
 
   gargamelWins = id => {
-  axios
+    axios
       .delete(`http://localhost:3333/smurfs/${id}`)
-      .then(res=>this.setState({smurfs: res.data}))
-      .catch(rej=>console.log(rej))
-  }
+      .then(res => this.setState({ smurfs: res.data }))
+      .catch(rej => console.log(rej));
+  };
 
   // add any needed code to ensure that the smurfs collection exists on state and it has data coming from the server
   // Notice what your map function is looping over and returning inside of Smurfs.
@@ -45,16 +45,26 @@ class App extends Component {
     // console.log(this.state.smurfs)
     return (
       <div className="App">
-        <NavLink to="/" activeClassName="gabba">Home</NavLink>
-        <NavLink to="/smurf-form" activeClassName="gabba">Add a Smurf</NavLink>
-        <Route path="/smurf-form" render = {()=> <SmurfForm addSmurf={this.addSmurf} /> 
-        } />
-        <Route exact path = "/" render={()=> <Smurfs gargamelWins={this.gargamelWins} smurfs={this.state.smurfs} />
-          } />
-
-            
-          
-        
+        <NavLink to="/" activeClassName="gabba">
+          Home
+        </NavLink>
+        <NavLink to="/smurf-form" activeClassName="gabba">
+          Add a Smurf
+        </NavLink>
+        <Route
+          path="/smurf-form"
+          render={() => <SmurfForm addSmurf={this.addSmurf} />}
+        />
+        <Route
+          exact
+          path="/"
+          render={() => (
+            <Smurfs
+              gargamelWins={this.gargamelWins}
+              smurfs={this.state.smurfs}
+            />
+          )}
+        />
       </div>
     );
   }
