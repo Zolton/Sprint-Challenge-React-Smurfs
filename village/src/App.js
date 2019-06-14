@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Route } from "react-router-dom";
-//import { Router } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import "./App.css";
 import SmurfForm from "./components/SmurfForm";
 import Smurfs from "./components/Smurfs";
@@ -36,12 +36,14 @@ class App extends Component {
     console.log(this.state.smurfs)
     return (
       <div className="App">
-       
-          <SmurfForm addSmurf={this.addSmurf} /> 
+        <NavLink to="/" activeClassName="gabba">Home</NavLink>
+        <NavLink to="/smurf-form" activeClassName="gabba">Add a Smurf</NavLink>
+        <Route path="/smurf-form" render = {()=> <SmurfForm addSmurf={this.addSmurf} /> 
+        } />
+        <Route exact path = "/" render={()=> <Smurfs smurfs={this.state.smurfs} />
+          } />
+
             
-          
-          
-            <Smurfs smurfs={this.state.smurfs} />
           
         
       </div>
