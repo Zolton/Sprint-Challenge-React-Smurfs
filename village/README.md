@@ -23,8 +23,22 @@ Self-Study/Essay Questions
 Demonstrate your understanding of this Sprint's concepts by answering the following free-form questions. Edit this document to include your answers after each question. Make sure to leave a blank line above and below your answer so it is clear and easy to read by your project manager.
 
  Explain the differences between client-side routing and server-side routing.
+
+Client-side routing - download the entire app to users computer, then run it.  Initial load takes longer, but moving between pages is almost instant, as fast as the users computer can render it
+
+Server-side - much more SEO friendly.  Quicker initial loading, but each time user re-renders or changes the page, the browser needs to reload, and each page needs to be loaded as the user navigates around.  Also saves space on users computer since they only load pages they view
+
  Which HTTP methods can be mapped to the CRUD acronym that we use when interfacing with APIs/Servers.
+
+Create - post, put
+Read - get
+Update - put, post
+Delete - delete
+
  Mention three tools we can use to make AJAX requests.
+
+get, post, put, delete
+
 Project Set Up
 Follow these steps to set up and work on your project:
 
